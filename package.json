@@ -1,7 +1,7 @@
 {
   "name": "fork-ts-checker-webpack-plugin",
-  "version": "1.0.0-alpha.5",
-  "description": "Runs typescript type checker and linter on separate process.",
+  "version": "0.0.1",
+  "description": "Runs typescript type builder on separate process.",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "files": [
@@ -19,7 +19,7 @@
     "watch": "tsc --version && tsc --project \"./src\" --watch"
   },
   "repository": {
-    "url": "https://github.com/Realytics/fork-ts-checker-webpack-plugin.git",
+    "url": "https://github.com/pmabres/fork-ts-type-build-webpack-plugin.git",
     "type": "git"
   },
   "keywords": [
@@ -31,6 +31,7 @@
     "linter",
     "fork",
     "fast",
+    "declaration",
     "speed",
     "ts-loader",
     "awesome-typescript-loader",
@@ -40,14 +41,14 @@
   "engines": {
     "node": ">=6.11.5"
   },
-  "author": "Piotr Oleś <piotrek.oles@gmail.com>",
+  "author": "Francisco Mabres <pmabres@gmail.com>",
   "contributors": [
     "Piotr Oleś <piotrek.oles@gmail.com> (https://github.com/piotr-oles)",
     "John Reilly <johnny_reilly@hotmail.com> (https://blog.johnnyreilly.com)"
   ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Realytics/fork-ts-checker-webpack-plugin/issues"
+    "url": "https://github.com/pmabres/fork-ts-type-build-webpack-plugin/issues"
   },
   "devDependencies": {
     "@types/babel-code-frame": "^6.20.1",

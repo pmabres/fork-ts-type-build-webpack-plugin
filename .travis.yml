@@ -1,27 +1,26 @@
 os:
-  - linux
-  - osx
-  # - windows - travis isn't windows ready yet; tests fail for meaningless reasons
+- linux
+- osx
 language: node_js
 node_js:
- - '10'
- - '8'
+- '10'
+- '8'
 install:
- - yarn install
- - yarn build
- - yarn add $WEBPACK $TSLOADER $VUELOADER -D
- - yarn lint
+- yarn install
+- yarn build
+- yarn add $WEBPACK $TSLOADER $VUELOADER -D
+- yarn lint
 env:
- - WEBPACK=webpack@^5.0.0-alpha.5 TSLOADER=ts-loader@^5.0.0 VUELOADER=vue-loader@^15.2.4
- - WEBPACK=webpack@^4.0.0 TSLOADER=ts-loader@^5.0.0 VUELOADER=vue-loader@^15.2.4
- - WEBPACK=webpack@^3.10.0 TSLOADER=ts-loader@^3.4.0 VUELOADER=vue-loader@^13.5.0
- - WEBPACK=webpack@^2.7.0 TSLOADER=ts-loader@^3.4.0 VUELOADER=vue-loader@^13.5.0
+- WEBPACK=webpack@^5.0.0-alpha.5 TSLOADER=ts-loader@^5.0.0 VUELOADER=vue-loader@^15.2.4
+- WEBPACK=webpack@^4.0.0 TSLOADER=ts-loader@^5.0.0 VUELOADER=vue-loader@^15.2.4
+- WEBPACK=webpack@^3.10.0 TSLOADER=ts-loader@^3.4.0 VUELOADER=vue-loader@^13.5.0
+- WEBPACK=webpack@^2.7.0 TSLOADER=ts-loader@^3.4.0 VUELOADER=vue-loader@^13.5.0
 deploy:
   provider: npm
-  email: piotrek.oles@gmail.com
+  email: pmabres@gmail.com
   skip_cleanup: true
   api_key:
-    secure: bS5DICXIXzwMAxWhkZ6ks8q7O0rFaBIqmZNe+F3Vou/pMCcYbu1kRryD3sey3RvpdF768nG9ZqMCC+v3glN4hknizDb9mao5I581HvqL0j3hGB4BHuEho9j6GEEn0u6qr4biXOOHUy9/CPLu1xK6jsc3kOA56os1iUO6y7Z7yVgQvmfLBIMpDdwZ+TbkKMoBOZ1BGsz1q/vn2aIX67rQTfvSyu40r9QPuWI9itVevBK6SUwVa0AyYBxjJ0wlwwMLHY72+P5FF1QrwngwvFQsSSjXGvQ6n+xEXx2TR2YrFI+PLtXsBd1c9nQeAyUxGNJnJWAYKto+CjZo6ZISgeA6bpRr8jC1Lb2WVlkAMy5IN5F4SxS2vyehKaR5G6Ewm7y1Ft1RutIMAr3sy0UKSluD4k0sRX12S2SV8b0sK0z/VmtqX0vEcMo+hXgqloeiOf2ALbgbGk/uHGvzLlK/N/ypjFq+1sRFbpfGHxgGPR/FHq6zgmDJWq0T1b69T6a0MFEXzSvCoTDcN59ut8m5sBAfTwLZZ1XwGsd0DsYiEdQ8bZKh5INyOnynVEAYsggM2RgRRSkg8NwGC9W8CIGN0sAza19EcdeKQ9s6PaKQ9FL1hmyZgxGjV5MlrM5jCdeTEnwPNhIoKQh0SrhL+gcf2yqPRIiCRxI49RRDKwZ8fNvJPLk=
+    secure: ZwHqpeqlvPghv51hQ/1FUO1dUYz79RvMP8ErG4SNcNiZVbOSWz9gm8tN1sAL4pEg6kLFD1wvXmOEfPR5e+N9cr6+QTSIswrysNJmDoq1L//dn02twQMKHhGkgpH2bkB24pcA9ZreXRNqtWgqyets9tXVkmc40M92HkMqQ9LIbbBT3/+knIUmxvcrI+fFcbocXbUsn4QnqAPswWDM4OlYDB3OAWZaIeiKQ8BiAOdBhXtZQqVfqB8MvTZusWLMv85JJsq6Ipbi7WZJD+2bU+HF/B33BXXXvfHcqqdeVU+6ReI35+t6jcVgHIln1L7EAcM83e24L13i//AA+A9V1gERMCMfXti3Xf3gv/Hs2xaA63bMKNmqaXUrGQZVlyU2g1S/c9U2EzIZ9JipV9HE128XTRiUFmlwQFM+dI5FIeNU1PhDuFudd2fwH9JRB7oCkhq4t0Fg0Mxz0m2102VdfjS69FtxvIj11QznLIB2AW0M2MaP3hVqFIg3kHMNyWXAFE+B+XLev9Og47JCkoj1wrm09CCHwBqQBm4qfHH3HyIOhoPGImb0UzVwVYnNqymItATNoYbnYy45hXu7Gei/vBrLBrsXtgMxsN22XcXjAG8FSeqe9cAL9fqqcizUbqjKQpKrjf+BHTwMGYjqbb7xRvWA+vmuksuTRgy4AGNhqZUebsQ=
   on:
     tags: true
     branch: master
