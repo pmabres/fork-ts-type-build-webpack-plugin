@@ -54,18 +54,15 @@ export class CompilerHost
   constructor(
     private typescript: typeof ts,
     programConfigFile: string,
-    compilerOptions: ts.CompilerOptions,
-    checkSyntacticErrors: boolean
+    compilerOptions: ts.CompilerOptions
   ) {
+    compilerOptions.emitDeclarationOnly = true;
     this.tsHost = typescript.createWatchCompilerHost(
       programConfigFile,
       compilerOptions,
       typescript.sys,
       typescript.createEmitAndSemanticDiagnosticsBuilderProgram,
       (diag: ts.Diagnostic) => {
-        if (!checkSyntacticErrors && diag.code >= 1000 && diag.code < 2000) {
-          return;
-        }
         this.gatheredDiagnostic.push(diag);
       },
       () => {
@@ -197,13 +194,13 @@ export class CompilerHost
     this.typescript.sys.clearTimeout!(timeoutId);
   }
 
-  public onWatchStatusChange(
-    _diagnostic: ts.Diagnostic,
-    _newLine: string,
-    _options: ts.CompilerOptions
-  ): void {
-    // do nothing
-  }
+  // public onWatchStatusChange(
+  //   _diagnostic: ts.Diagnostic,
+  //   _newLine: string,
+  //   _options: ts.CompilerOptions
+  // ): void {
+  //   // do nothing
+  // }
 
   public watchDirectory(
     path: string,
@@ -351,19 +348,19 @@ export class CompilerHost
   // - much slower for some reason,
   // - writes files anyway (o_O)
   // - has different way of providing diagnostics. (with this version we can at least reliably get it from afterProgramCreate)
-  public createDirectory(_path: string): void {
-    // pretend everything was ok
-  }
+  // public createDirectory(_path: string): void {
+  //   // pretend everything was ok
+  // }
 
-  public writeFile(
-    _path: string,
-    _data: string,
-    _writeByteOrderMark?: boolean
-  ): void {
-    // pretend everything was ok
-  }
+  // public writeFile(
+  //   _path: string,
+  //   _data: string,
+  //   _writeByteOrderMark?: boolean
+  // ): void {
+  //   // pretend everything was ok
+  // }
 
-  public onCachedDirectoryStructureHostCreate?(_host: any): void {
-    // pretend everything was ok
-  }
+  // public onCachedDirectoryStructureHostCreate?(_host: any): void {
+  //   // pretend everything was ok
+  // }
 }

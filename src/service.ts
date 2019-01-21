@@ -1,48 +1,25 @@
 import * as process from 'process';
 // tslint:disable-next-line:no-implicit-dependencies
 import * as ts from 'typescript'; // import for types alone
-import { IncrementalChecker } from './IncrementalChecker';
 import { CancellationToken } from './CancellationToken';
 import { NormalizedMessage } from './NormalizedMessage';
-import { IncrementalCheckerInterface } from './IncrementalCheckerInterface';
-import { ApiIncrementalChecker } from './ApiIncrementalChecker';
+import { IncrementalBuilderInterface } from './IncrementalBuilderInterface';
+import { ApiIncrementalBuilder } from './ApiIncrementalBuilder';
 
 const typescript: typeof ts = require(process.env.TYPESCRIPT_PATH!);
 
-const checker: IncrementalCheckerInterface =
-  process.env.USE_INCREMENTAL_API === 'true'
-    ? new ApiIncrementalChecker(
-        typescript,
-        process.env.TSCONFIG!,
-        JSON.parse(process.env.COMPILER_OPTIONS!),
-        process.env.TSLINT === '' ? false : process.env.TSLINT!,
-        process.env.TSLINTAUTOFIX === 'true',
-        process.env.CHECK_SYNTACTIC_ERRORS === 'true'
-      )
-    : new IncrementalChecker(
-        typescript,
-        process.env.TSCONFIG!,
-        JSON.parse(process.env.COMPILER_OPTIONS!),
-        process.env.TSLINT === '' ? false : process.env.TSLINT!,
-        process.env.TSLINTAUTOFIX === 'true',
-        process.env.WATCH === '' ? [] : process.env.WATCH!.split('|'),
-        parseInt(process.env.WORK_NUMBER!, 10) || 0,
-        parseInt(process.env.WORK_DIVISION!, 10) || 1,
-        process.env.CHECK_SYNTACTIC_ERRORS === 'true',
-        process.env.VUE === 'true'
-      );
+const builder: IncrementalBuilderInterface = new ApiIncrementalBuilder(
+  typescript,
+  process.env.TSCONFIG!,
+  JSON.parse(process.env.COMPILER_OPTIONS!)
+);
 
 async function run(cancellationToken: CancellationToken) {
   let diagnostics: NormalizedMessage[] = [];
-  let lints: NormalizedMessage[] = [];
-
-  checker.nextIteration();
+  builder.nextIteration();
 
   try {
-    diagnostics = await checker.getDiagnostics(cancellationToken);
-    if (checker.hasLinter()) {
-      lints = checker.getLints(cancellationToken);
-    }
+    diagnostics = await builder.getDiagnostics(cancellationToken);
   } catch (error) {
     if (error instanceof typescript.OperationCanceledException) {
       return;
@@ -54,8 +31,7 @@ async function run(cancellationToken: CancellationToken) {
   if (!cancellationToken.isCancellationRequested()) {
     try {
       process.send!({
-        diagnostics,
-        lints
+        diagnostics
       });
     } catch (e) {
       // channel closed...

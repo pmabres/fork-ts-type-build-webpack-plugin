@@ -1,14 +1,12 @@
 import { CancellationToken } from './CancellationToken';
 import { NormalizedMessage } from './NormalizedMessage';
 
-export interface IncrementalCheckerInterface {
+export interface IncrementalBuilderInterface {
   nextIteration(): void;
 
   getDiagnostics(
     cancellationToken: CancellationToken
   ): Promise<NormalizedMessage[]>;
 
-  hasLinter(): boolean;
-
-  getLints(cancellationToken: CancellationToken): NormalizedMessage[];
+  writeDeclaration(cancellationToken: CancellationToken): void;
 }

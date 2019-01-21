@@ -18,7 +18,7 @@ import { Message } from './Message';
 
 import { getForkTsCheckerWebpackPluginHooks, legacyHookMap } from './hooks';
 
-const checkerPluginName = 'fork-ts-checker-webpack-plugin';
+const checkerPluginName = 'fork-ts-type-build-webpack-plugin';
 
 type Formatter = (message: NormalizedMessage, useColors: boolean) => string;
 
