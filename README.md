@@ -1,8 +1,8 @@
-# Fork TS Checker Webpack Plugin
+# Fork TS Type Build Webpack Plugin
 [![Npm version](https://img.shields.io/npm/v/fork-ts-checker-webpack-plugin.svg?style=flat-square)](https://www.npmjs.com/package/fork-ts-checker-webpack-plugin)
 [![Build Status](https://travis-ci.org/Realytics/fork-ts-checker-webpack-plugin.svg?branch=master)](https://travis-ci.org/Realytics/fork-ts-checker-webpack-plugin)
 
-Webpack plugin that runs typescript type checker on a separate process.
+Webpack plugin that runs typescript type definitions generator on a separate process.
  
 ## Installation
 This plugin requires minimum **webpack 2.3**, **typescript 2.1** and optionally **tslint 4.0**
