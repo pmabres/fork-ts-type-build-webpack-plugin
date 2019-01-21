@@ -9,6 +9,7 @@
   ],
   "scripts": {
     "build": "tsc --version && tsc --project \"./src\"",
+    "test": "node -v",
     "test:unit": "mocha -R spec ./test/unit --exit",
     "test:integration": "mocha -R spec ./test/integration --exit && rimraf tmp",
     "test:manual": "npm run build && npm run test:unit && npm run test:integration",
