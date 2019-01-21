@@ -1,6 +1,6 @@
 # Fork TS Type Build Webpack Plugin
-[![Npm version](https://img.shields.io/npm/v/fork-ts-checker-webpack-plugin.svg?style=flat-square)](https://www.npmjs.com/package/fork-ts-checker-webpack-plugin)
-[![Build Status](https://travis-ci.org/Realytics/fork-ts-checker-webpack-plugin.svg?branch=master)](https://travis-ci.org/Realytics/fork-ts-checker-webpack-plugin)
+[![Npm version](https://img.shields.io/npm/v/fork-ts-type-build-webpack-plugin.svg?style=flat-square)](https://www.npmjs.com/package/fork-ts-type-build-webpack-plugin)
+[![Build Status](https://travis-ci.org/pmabres/fork-ts-type-build-webpack-plugin.svg?branch=master)](https://travis-ci.org/pmabres/fork-ts-type-build-webpack-plugin)
 
 Webpack plugin that runs typescript type definitions generator on a separate process.
  
