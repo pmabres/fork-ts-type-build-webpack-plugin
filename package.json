@@ -1,6 +1,6 @@
 {
   "name": "fork-ts-type-build-webpack-plugin",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "Runs typescript type builder on separate process.",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
